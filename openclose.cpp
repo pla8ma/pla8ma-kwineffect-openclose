@@ -85,7 +85,7 @@ OpenCloseEffect::~OpenCloseEffect() = default;
 void OpenCloseEffect::reconfigure(ReconfigureFlags)
 {
     m_open = AnimationParams{
-        .duration = animationTime(250ms),
+        .duration = std::chrono::milliseconds(qRound(animationTime(250ms))),
         .curve = curve(cubicDecelerate),
         .translationFrom = QVector3D(0, -0.017, -0.1),
         .translationTo = QVector3D(0, 0, 0),
@@ -96,7 +96,7 @@ void OpenCloseEffect::reconfigure(ReconfigureFlags)
         .opacityTo = 1,
     };
     m_close = AnimationParams{
-        .duration = animationTime(166ms),
+        .duration = std::chrono::milliseconds(qRound(animationTime(166ms))),
         .curve = curve(parabolicAccelerate),
         .translationFrom = QVector3D(0, 0, 0),
         .translationTo = QVector3D(0, 0, 0),
@@ -108,15 +108,15 @@ void OpenCloseEffect::reconfigure(ReconfigureFlags)
     };
 }
 
-void OpenCloseEffect::prePaintWindow(RenderView *view, EffectWindow *w, WindowPrePaintData &data)
+void OpenCloseEffect::prePaintWindow(RenderView *view, EffectWindow *w, WindowPrePaintData &data, std::chrono::milliseconds presentTime)
 {
     auto animationIt = m_animations.find(w);
     if (animationIt != m_animations.end()) {
-        animationIt->second.timeLine.advance(view);
+        animationIt->second.timeLine.advance(presentTime);
         data.setTransformed();
     }
 
-    effects->prePaintWindow(view, w, data);
+    effects->prePaintWindow(view, w, data, presentTime);
 }
 
 void OpenCloseEffect::apply(EffectWindow *window, int, WindowPaintData &data, WindowQuadList &quads)
