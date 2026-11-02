@@ -5,13 +5,15 @@
                 "Name": "Pla8ma"
             }
         ],
+        "BugReportUrl": "https://github.com/pla8ma/pla8ma-kwineffect-openclose/issues",
         "Category": "Window Open/Close Animation",
         "Description": "Pla8ma open/close animation: tilting in 3D while fading",
         "Description[de]": "Pla8ma-Animation zum Öffnen und Schließen: räumlich kippen und dabei ein- oder ausblenden",
         "EnabledByDefault": false,
         "License": "GPL-2.0-or-later",
         "Name": "Open/Close (Pla8ma)",
-        "Name[de]": "Öffnen/Schließen (Pla8ma)"
+        "Name[de]": "Öffnen/Schließen (Pla8ma)",
+        "Website": "https://github.com/pla8ma/pla8ma-kwineffect-openclose"
     },
     "org.kde.kwin.effect": {
         "exclusiveGroup": "toplevel-open-close-animation"
