@@ -10,11 +10,15 @@
 # the package is rebuilt.
 
 %global kwin_version %(rpm -q --qf '%%{VERSION}' kwin-devel 2>/dev/null | grep -E '^[0-9.]+$' || echo 0)
+# .copr/Makefile fixes both when making the source RPM: snapdate is the
+# commit's date, buildstamp the time of the build, so every rebuild is an
+# update for dnf.
 %global snapdate %(date +%Y%m%d)
+%global buildstamp %(date -u +%Y%m%d%H%M)
 
 Name:           pla8ma-kwineffect-openclose
 Version:        0^%{snapdate}
-Release:        1.kwin%{kwin_version}%{?dist}
+Release:        %{buildstamp}%{?dist}
 Summary:        Pla8ma open/close animation for KDE Plasma
 License:        GPL-2.0-or-later
 URL:            https://github.com/pla8ma/pla8ma-kwineffect-openclose
@@ -51,5 +55,5 @@ Settings > Window Management > Desktop Effects.
 %{_kf6_qtplugindir}/kwin/effects/plugins/kwineffect_pla8ma_openclose.so
 
 %changelog
-* Mon Nov 02 2026 Pla8ma <johndoe@example.com> - 0^20261102-1
+* Mon Nov 02 2026 Pla8ma <johndoe@example.com>
 - Snapshot of the main branch
