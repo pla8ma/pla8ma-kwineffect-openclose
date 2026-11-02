@@ -49,6 +49,20 @@ If KWin does not pick it up right away, log out and back in.
 **After every KWin update, run `./install.sh` again.** KWin only loads
 effects built against its exact version.
 
+## Packages
+
+Instead of `install.sh`, you can build a package of the newest state of
+`main`:
+
+- Fedora: [`packaging/fedora/pla8ma-kwineffect-openclose.spec`](packaging/fedora/pla8ma-kwineffect-openclose.spec),
+  the steps are at the top of the file.
+- Arch Linux: [`packaging/arch/PKGBUILD`](packaging/arch/PKGBUILD), run
+  `makepkg -si` in its folder.
+
+The package installs the effect for all users but does not switch it on:
+do that in System Settings > Window Management > Desktop Effects.
+Rebuild the package after every KWin update, as with `install.sh`.
+
 ## Plasma versions
 
 Use the branch that matches your Plasma version:
