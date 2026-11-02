@@ -5,11 +5,9 @@
 #   rpmbuild -bb pla8ma-kwineffect-openclose.spec
 #   sudo dnf install ~/rpmbuild/RPMS/x86_64/pla8ma-kwineffect-openclose-*.rpm
 #
-# KWin only loads effects built against its exact version, so the package
-# requires exactly the KWin it was built with: dnf holds KWin back until
-# the package is rebuilt.
+# KWin only loads effects built against its exact version: after a KWin
+# update the effect stays off until the package is rebuilt.
 
-%global kwin_version %(rpm -q --qf '%%{VERSION}' kwin-devel 2>/dev/null | grep -E '^[0-9.]+$' || echo 0)
 # .copr/Makefile fixes both when making the source RPM: snapdate is the
 # commit's date, buildstamp the time of the build, so every rebuild is an
 # update for dnf.
@@ -32,7 +30,7 @@ BuildRequires:  kwin-devel
 BuildRequires:  libdrm-devel
 BuildRequires:  libepoxy-devel
 
-Requires:       kwin-libs%{?_isa} = %{kwin_version}
+Requires:       kwin-libs%{?_isa} >= 6.8
 
 %description
 An open/close effect for KDE Plasma 6, forked from KWin's Glide effect:

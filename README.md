@@ -61,7 +61,8 @@ Instead of `install.sh`, you can build a package of the newest state of
 
 The package installs the effect for all users but does not switch it on:
 do that in System Settings > Window Management > Desktop Effects.
-Rebuild the package after every KWin update, as with `install.sh`.
+Rebuild the package after every KWin update, as with `install.sh`; until
+then KWin leaves the effect off.
 
 ## Plasma versions
 

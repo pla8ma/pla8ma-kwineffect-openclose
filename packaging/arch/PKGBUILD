@@ -1,9 +1,8 @@
 # Builds the newest state of the main branch:
 #   makepkg -si
 #
-# KWin only loads effects built against its exact version, so the package
-# depends on exactly the KWin it was built with: rebuild it after every
-# KWin update (pacman refuses the update until then).
+# KWin only loads effects built against its exact version: after a KWin
+# update the effect stays off until you rebuild the package.
 
 pkgname=pla8ma-kwineffect-openclose-git
 _repo=pla8ma-kwineffect-openclose
@@ -13,7 +12,7 @@ pkgdesc='Pla8ma open/close animation for KDE Plasma'
 arch=('x86_64')
 url="https://github.com/pla8ma/$_repo"
 license=('GPL-2.0-or-later')
-depends=('kwin')
+depends=('kwin>=6.8')
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'vulkan-headers')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -35,10 +34,6 @@ build() {
 }
 
 package() {
-    local kwin_version
-    kwin_version=$(pacman -Q kwin | awk '{ sub(/-[^-]*$/, "", $2); print $2 }')
-    depends=("kwin=$kwin_version")
-
     DESTDIR="$pkgdir" cmake --install build
     install -Dm644 "$_repo/README.md" -t "$pkgdir/usr/share/doc/$pkgname/"
 }
