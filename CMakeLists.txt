@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.22)
-project(kwineffect_openclose LANGUAGES CXX)
+project(kwineffect_pla8ma_openclose LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -18,7 +18,7 @@ find_package(KWin REQUIRED)
 # The factory macro has the Q_OBJECT that AutoMoc looks for.
 list(APPEND CMAKE_AUTOMOC_MACRO_NAMES "KWIN_EFFECT_FACTORY_SUPPORTED")
 
-kcoreaddons_add_plugin(kwineffect_openclose
+kcoreaddons_add_plugin(kwineffect_pla8ma_openclose
     SOURCES openclose.cpp main.cpp
     INSTALL_NAMESPACE "kwin/effects/plugins")
-target_link_libraries(kwineffect_openclose PRIVATE KWin::kwin Qt6::Gui)
+target_link_libraries(kwineffect_pla8ma_openclose PRIVATE KWin::kwin Qt6::Gui)
