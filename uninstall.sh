@@ -2,7 +2,7 @@
 # Removes the open/close effect again and switches KDE's Scale back on.
 set -uo pipefail
 
-ID="kwineffect_openclose"
+ID="kwineffect_pla8ma_openclose"
 
 kwriteconfig6 --file kwinrc --group Plugins --key "${ID}Enabled" --delete
 for other in fade scale glide; do

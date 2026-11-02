@@ -8,7 +8,7 @@ set -euo pipefail
 
 cd "$(dirname "$0")"
 
-ID="kwineffect_openclose"
+ID="kwineffect_pla8ma_openclose"
 PREFIX="$HOME/.local"
 PLUGINDIR="lib64/qt6/plugins"
 TARGET="$PREFIX/$PLUGINDIR/kwin/effects/plugins"
